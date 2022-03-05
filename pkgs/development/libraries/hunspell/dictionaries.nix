@@ -856,4 +856,25 @@ rec {
     readmeFile = "README_hr_HR.txt";
     license = with lib.licenses; [ gpl2Only lgpl21Only mpl11 ];
   };
+
+  /* TOKI PONA */
+
+  tok = mkDict rec {
+    pname = "hunspell-tok";
+    version = "unstable-2021-12-09";
+    dictFileName = "tok";
+    readmeFile = "README.adoc";
+    src = fetchFromGitHub {
+      owner = "somasis";
+      repo = "${pname}";
+      rev = "f14bb4030f791c52665565ff9402122f50679c56";
+      sha256 = "sha256-DavGQhoU+CNUaecFcshNyRiVsBf/9Db3AIebMDJYs/o=";
+    };
+    meta = with lib; {
+      description = "Hunspell dictionary for Toki Pona";
+      license = licenses.publicDomain;
+      maintainers = with maintainers; [ somasis ];
+      platforms = platforms.all;
+    };
+  };
 }
